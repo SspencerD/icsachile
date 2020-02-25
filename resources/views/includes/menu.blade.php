@@ -1,5 +1,4 @@
 <header>
-
     <nav id="menu" class="navbar">
         <div class="nav-inner">
         <div class="col-sm-1 col-xs-1 header-right">
@@ -18,13 +17,9 @@
               <li><a href="{{url('/laboratorio') }}" class="parent">Laboratorio</a></li>
               <li class="level-top"><a href="#" class="active parent">Productos</a>
                 <ul>
-                  <li><a href="{{ url('/products') }}">Corchos</a></li>
-                  <li><a href="{{ url('/products')}}">Barricas</a></li>
-                  <li><a href="{{ url('/products')}}">Maderas</a></li>
-                  <li><a href="{{ url('/products')}}">Embotellación</a></li>
-                  <li><a href="{{ url('/products')}}">Insumos</a></li>
-                  <li><a href="{{ url('/products')}}">Repuestos</a></li>
-                  <li><a href="{{ url('/products')}}">Equipamiento</a></li>
+                    @foreach($categories as $category)
+                  <li><a href="{{'/categories/'.$category->id }}">{{$category->name}}</a></li>
+                  @endforeach
                 </ul>
               </li>
               <li><a href="{{ url('/contacto')}}" class="parent">Contacto</a></li>

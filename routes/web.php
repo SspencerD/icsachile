@@ -22,7 +22,11 @@ Route::get('/postventa', 'WelcomeController@postventa');
 Route::get('/contacto', 'WelcomeController@contacto');
 
 
+
 Auth::routes();
+
+Route::get('/products/{id}','ProductController@show');
+Route::get('/categories/{id}','CategoryController@show');
 
 
 Route::middleware(['auth', 'admin'])->prefix('admin')->namespace('Admin')->group(function () {

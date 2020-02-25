@@ -6,55 +6,65 @@
 @include('includes.menu')
 @include('includes.demostracion')
 <div id="center">
-    {{-- Demostración empresa --}}
     <div class="container">
         <div class="row">
             <div class="content col-sm-12">
                 <div class="customtab">
-                    <h2>Nuestro Catalogo </h2>
+                    <h3 class="productblock-title">Nuestros productos</h3>
                     <div id="tabs" class="customtab-wrapper">
                         <ul class='customtab-inner'>
                             @foreach($categories as $category)
-                            <li class='tab'><a href="#tab-{{$category->name}}">{{$category->name}}</a></li>
+                            <li class='tab'><a href="#tab-{{$category->name}}">{{ $category->name }}</a></li>
                             @endforeach
-                            <hr>
                         </ul>
                     </div>
                 </div>
-                <!-- tab-tapones-->
+                <!-- tab-furniture-->
                 @foreach($categories as $category)
+                <div id="tab-{{$category->name}}" class="tab-content">
+                    @forelse($category->products as $product)
+                    <div class="product-layout  product-grid  col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                        <div class="item">
+                            <div class="product-thumb">
+                                <div class="image product-imageblock"> <a href="#"> <img
+                                            src="{{$product->featured_image_url}}" alt="{{$product->name}}"
+                                            title="{{$product->name}}" class="img-responsive" /> <img
+                                            src="{{$product->featured_image_url}}" alt="{{$product->name}}"
+                                            title="{{$product->name}}" class="img-responsive" /> </a>
+                                    <ul class="button-group">
+                                        <li>
 
-            <div id="tab-{{$category->name }}" class="tab-content">
-                @foreach ($products as $product)
-                    <div class="row">
-                        <div class="col-md-4">
-                            <figure class="card card-product">
-                            <div class="img-wrap"><img src="{{ $product->featured_image_url }}" height="250"></div>
-                                <figcaption class="info-wrap">
-                                <h4 class="title">{{ $product->name }}</h4>
-                                    <p class="desc"></p>
-                                    <div class="rating-wrap">
-                                        <div class="label-rating"></div>
-                                    </div> <!-- rating-wrap.// -->
-                                </figcaption>
-                                <div class="bottom-wrap">
-                                    <div class="price-wrap h5">
-                                        <span class="price-new alert-success">Stock disponible</span>
-                                    </div> <!-- price-wrap.// -->
-                                </div> <!-- bottom-wrap.// -->
-                            </figure>
-                        </div> <!-- col // -->
+                                            <form action="{{ url('/products/'.$product->id) }}" method="get">
+                                            <button type="submit" class="quick-view" data-toggle="tooltip"
+                                                data-placement="top" title="Ver Producto"><i
+                                                    class="fa fa-eye"></i></button>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="caption product-detail">
+                                    <p class="price product-price">{{ $product->name }}</p>
+                                    <h4 class="product-name"><a href="#"
+                                            title="{{ $product->name }}">{{ $product->description }}</a></h4>
+                                    <p class="price product-price">{{ $product->category_name }}
+                                        <h3 class="price-tax">{{$product->code }}</h3>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        @empty
+                        <p> Vaya , no hay ningún producto en esta categoria 😞</p>
+                        @endforelse
                     </div>
-                    @endforeach
+                    <div class="viewmore">
+
+                    </div>
                 </div>
                 @endforeach
-
-                <!-- tab-barricas-->
-
-                </div>
             </div>
         </div>
-
+    </div>
+</div>
 {{-- Noticias --}}
 @include('includes.notices')
 @guest
@@ -64,6 +74,6 @@
 @include('includes.representaciones')
 {{--  footer  --}}
 <div class="text-center">
-@include('includes.footer')
+    @include('includes.footer')
 </div>
 @endsection
