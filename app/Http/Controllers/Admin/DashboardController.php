@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Category;
 use App\Http\Controllers\Controller;
+use App\Notice;
 use App\Product;
 use Illuminate\Http\Request;
 
@@ -19,7 +20,8 @@ class DashboardController extends Controller
     {
         $categories = Category::all();
         $products = Product::all();
-        return view('admin.dashboard')->with(compact('categories','products'));
+        $noticies = Notice::all();
+        return view('admin.dashboard')->with(compact('categories','products','noticies'));
 
     }
 }

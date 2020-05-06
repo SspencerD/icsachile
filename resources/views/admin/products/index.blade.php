@@ -54,22 +54,22 @@
                                 <td>{{ $producto->quantity}}</td>
                                 <td class="">
                                     <div class="btn-group" role="group" aria-label="Basic example">
+                                        <a href="" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip"
+                                            data-placement="top" title="Ver Producto">
+                                            <i class="far fa-eye"></i>
+                                        </a>
+                                        <a href="{{ url('/admin/products/'.$producto->id.'/images') }}" type="button"
+                                            class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top"
+                                            title="Ver Producto">
+                                            <i class="fas fa-images"></i>
+                                        </a>
+                                        <a href="{{ url('/admin/products/'.$producto->id.'/edit') }}" type="button"
+                                            class="btn-warning btn-sm" data-toggle="tooltip" data-placement="top"
+                                            title="Editar producto">
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </a>
                                         <form action="{{ ('/admin/products/'.$producto->id) }}" method="POST">
                                             @csrf @method('DELETE')
-                                            <a href="" type="button" class="btn btn-primary btn-sm"
-                                                data-toggle="tooltip" data-placement="top" title="Ver Producto">
-                                                <i class="far fa-eye"></i>
-                                            </a>
-                                            <a href="{{ url('/admin/products/'.$producto->id.'/images') }}"
-                                                type="button" class="btn btn-warning btn-sm" data-toggle="tooltip"
-                                                data-placement="top" title="Ver Producto">
-                                                <i class="fas fa-images"></i>
-                                            </a>
-                                            <a href="{{ url('/admin/products/'.$producto->id.'/edit') }}" type="button"
-                                                class="btn-warning btn-sm" data-toggle="tooltip" data-placement="top"
-                                                title="Editar producto">
-                                                <i class="fas fa-pencil-alt"></i>
-                                            </a>
                                             <button type="submit" class="btn btn-danger btn-sm" data-toggle="tooltip"
                                                 data-placement="top" title="Borrar producto">
                                                 <i class="far fa-trash-alt"></i>
@@ -81,6 +81,8 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <div class="text-center"> {{$productos->links() }}</div>
+
                 </div>
             </div>
         </div>

@@ -4,11 +4,30 @@
 
 @section('content')
 @include('includes.menu')
+@push('styles')
+<style>
+    .grid-list-wrapper.product-layout .product-list .col-xs-12 .product-thumb {
 
+margin-bottom: 1em;
+}
+
+.image .product-imageblock .product-thumb {
+display: -webkit-box;
+display: -webkit-flex;
+display: -ms-flexbox;
+display: flex;
+flex-wrap: wrap;
+}
+
+.center .container .row>[class *='col-'] {
+display: flex;
+flex-direction: column;
+}
+</style>
+@endpush
 <body class="category col-2 left-col">
     <div class="breadcrumb parallax-container">
-      <div class="parallax"><img src="image/prlx.jpg" alt="#"></div>
-    <h1 class="category-title">oooo</h1>
+    <h1 class="category-title">{{ $category->name }}</h1>
     </div>
     <div class="container">
       <div class="row">
@@ -48,8 +67,9 @@
             <div class="col-md-2 text-right sort-wrapper">
             </div>
             <div class="col-md-1 text-right page-wrapper">
-              <label class="control-label" for="input-limit">Show :</label>
+            <label class="control-label" for="input-limit">Show : {{$products->count()}}</label>
             </div>
+
             <div class="col-md-6 list-grid-wrapper"> <a href="#" id="compare-total"></a>
               <div class="btn-group btn-list-grid">
                 <button type="button" id="list-view" class="btn btn-default list" data-toggle="tooltip" title="List"></button>
@@ -59,12 +79,14 @@
           </div>
           <br />
           <div class="grid-list-wrapper">
+              @foreach($products as $product)
             <div class="product-layout product-list col-xs-12">
               <div class="product-thumb">
                 <div class="image product-imageblock">
-                <a href="product.html">
-                <img src="image/product/Pro-04.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive" />
-                <img src="image/product/Pro-04-1.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive" />
+                <a href="{{$product->featured_image_url}}" data-fancybox="images-preview"
+                data-width="1500" data-height="1000">
+                <img src="{{$product->featured_image_url}}" alt="{{$product->name }}" title="{{$product->name }}" class="img-responsive" />
+                <img src="{{$product->featured_image_url}}" alt="{{$product->name }}" title="{{$product->name }}" class="img-responsive" />
                 </a>
                   <ul class="button-group grid-btn">
                    {{--  <li>
@@ -82,15 +104,8 @@
                   </ul>
                 </div>
                 <div class="caption product-detail">
-                  <h4 class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">Casual Shirt With Ruffle Hem</a></h4>
-                  <p class="price product-price">$122.00<span class="price-tax">Ex Tax: $100.00</span></p>
-                  <p class="product-desc"> More room to move.
-
-                    With 80GB or 160GB of storage and up to 40 hours of battery life, the new iPod classic lets you enjoy up to 40,000 songs or up to 200 hours of video or any combination wherever you go.
-
-                    Cover Flow.
-
-                    Browse through your music collection by flipping..</p>
+                  <h4 class="product-name"><a href="#" title="{{ $product->name}}">{{ $product->name }}</a></h4>
+                <p class="product-desc">{{$product->long_description }}</p>
                   <ul class="button-group list-btn">
                     {{-- <li>
                       <button type="button" class="wishlist" data-toggle="tooltip" data-placement="top" title="Add to Wish List" ><i class="fa fa-heart-o"></i></button>
@@ -108,4 +123,6 @@
                 </div>
               </div>
             </div>
+            @endforeach
           </div>
+          @endsection

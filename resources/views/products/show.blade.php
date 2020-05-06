@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title','Ver Producto')
-
+@section('title','Ver Producto  '. config('app.name'))
+<div class="preloader loader" style="display: block;"> <img src="{{ asset('image/loader.gif') }}" alt="#" /></div>
 @section('content')
 @include('includes.menu')
 
@@ -49,18 +49,6 @@
                         <h2 class="productpage-price">$122.00</h2>
                     </li>
                     <li><span class="productinfo-tax">Ex Tax: $100.00</span></li> --}}
-                </ul>
-                <hr>
-                <ul class="list-unstyled product_info">
-                    <li>
-                        <label>Categoria:</label>
-                        <span> <a href="#">{{$products->category_name }}</a></span></li>
-                    <li>
-                        <label>Codigo:</label>
-                        <span> {{$products->code }}</span></li>
-                    <li>
-                        <label>Disponibilidad:</label>
-                        <span class="alert alert-success"> En Stock</span></li>
                 </ul>
                 <hr>
                 <p class="product-desc">
@@ -134,6 +122,5 @@
             </div>
         </div>
     </div>
-    @include('includes.footer')
 </div>
 @endsection

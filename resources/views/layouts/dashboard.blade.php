@@ -31,6 +31,7 @@
                     <li><a href="{{ url('/admin/categories') }}">Categorias</a></li>
                     <li><a href="{{ url('/admin/products') }}">Productos</a></li>
                     <li><a href="{{ url('/admin/brands') }}">Representaciones</a></li>
+                    <li><a href="{{ url('/admin/news') }}">Noticias</a></li>
 
 
                     {{-- <li><a href="#">dolor ipsum</a></li>

@@ -13,7 +13,7 @@ class ProductController extends Controller
         $products = Product::find($id);
         $images = $products->images;
 
-        return view('products.show')->compact('products','images');
+        return view('products.show')->with(compact('products','images'));
 
     }
 }

@@ -33,15 +33,15 @@
             </div>
           </div>
         </div>
-        {{-- <div class="col-md-4">
+        <div class="col-md-4">
           <div class="box">
             <i class="fa fa-users fa-fw success"></i>
             <div class="info">
-              <h3>5,245</h3> <span>Users</span>
-              <p>Lorem ipsum dolor sit amet</p>
+            <h3>{{$noticies->count() }}</h3> <span>Noticias</span>
+              <p>Noticias publicadas</p>
             </div>
           </div>
-        </div> --}}
+        </div>
       </div>
     </div>
   </section>

@@ -45,7 +45,8 @@
                                                 data-toggle="tooltip" data-placement="top" title="Ver categoria">
                                                 <i class="far fa-eye"></i>
                                             </a>
-                                        <a href="{{ url('/admin/categories/'.$category->id.'/edit') }}" type="button" class="btn-warning btn-sm" data-toggle="tooltip"
+                                            <a href="{{ url('/admin/categories/'.$category->id.'/edit') }}"
+                                                type="button" class="btn-warning btn-sm" data-toggle="tooltip"
                                                 data-placement="top" title="Editar categoria">
                                                 <i class="fas fa-pencil-alt"></i>
                                             </a>
@@ -107,7 +108,8 @@
                             </div>
                         </div>
                     </div>
-                <div class="text-center">{{ $categories->links() }}</div>
+                    <div class="text-center">
+                    </div>
                 </div>
             </div>
         </div>

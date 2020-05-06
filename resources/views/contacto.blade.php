@@ -85,6 +85,4 @@
     </div>
 </div>
 </div>
-<div class="text-center">
-    @include('includes.footer')
-</div>
+ @endsection

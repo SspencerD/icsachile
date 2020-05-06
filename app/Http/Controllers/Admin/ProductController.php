@@ -39,11 +39,10 @@ class ProductController extends Controller
         return redirect('/admin/products')->with('success', 'Producto Ingresado Correctamente');
     }
 
-    public function edit($id)
+    public function edit(Product $producto )
     {
         $categories = Category::orderBy('name')->get();
-        $producto = Product::find($id);
-        return view('admin.products.edit')->with(compact('producto', 'categories'));   // devolvera el formulario de registro a editar
+        return view('admin.products.edit')->with('producto', 'categories');   // devolvera el formulario de registro a editar
     }
 
     public function update(Request $request,  Product $producto) //inyección de dependencia de Laravel
@@ -57,12 +56,10 @@ class ProductController extends Controller
         return redirect('/admin/products')->with('success', 'Se ha editado con exito.');
     }
 
-    public function destroy($id) //inyección de dependencia de Laravel
+    public function destroy(Product $producto) //inyección de dependencia de Laravel
     {
 
-        $producto = Product::find($id);
         $producto->delete(); //realiza un Update sobre la tabla Product.
-
-        return back();
+        return back()->with('success','Producto borrado con exito');
     }
 }

@@ -10,8 +10,10 @@
         </div>
     </div>
     <div class="row">
-        <div class="wwd">
             <h1 class="display-5 text-center">Nuestra empresa</h1>
+            <br>
+            <br>
+
             <div class="col-sm-5"><img class="img-responsive" src="{{ url('image/corchera.png')}}" alt="#"></div>
             <div class="col-md-7">
                 <h2 class="text-center">Historia breve de como comenzó todo</h2>
@@ -32,7 +34,6 @@
                 </p>
             </div>
         </div>
-    </div>
     <br>
     <br>
     <br>
@@ -59,6 +60,4 @@
         </div>
     </div>
 </div>
-<div class="text-center">
-    @include('includes.footer')
-</div>
+@endsection

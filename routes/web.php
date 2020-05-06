@@ -20,18 +20,16 @@ Route::post('/contacto','WelcomeController@enviar')->name('enviar');
 Route::get('/somos', 'WelcomeController@somos');
 Route::get('/postventa', 'WelcomeController@postventa');
 Route::get('/contacto', 'WelcomeController@contacto');
+Route::get('/laboratorio', 'WelcomeController@laboratorio');
 
-
+Route::get('/products/{id}','ProductController@show');
+Route::get('/categories/{category}', 'CategoryController@show'); // Ruta para mostrar detalles del categorias.
 
 Auth::routes();
 
-Route::get('/products/{id}','ProductController@show');
-Route::get('/categories/{id}','CategoryController@show');
-
-
 Route::middleware(['auth', 'admin'])->prefix('admin')->namespace('Admin')->group(function () {
 
-    Route::get('/dashboard', 'DashboardController@index');
+    Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
     /* Productos */
     Route::get('/products', 'ProductController@index'); //listar productos
@@ -61,6 +59,13 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->namespace('Admin')->group
     Route::get('/brands/{brand}/edit', 'BrandController@edit');
     Route::post('/brands/{brand}/edit', 'BrandController@update');
     Route::delete('/brands/{brand}', 'BrandController@destroy');
+
+    /* Noticias */
+    Route::get('/news', 'NoticeController@index'); //Listar categorias
+    Route::post('/news', 'NoticeController@store'); //crear categoria
+    Route::get('/news/{notice}/edit', 'NoticeController@edit');
+    Route::post('/news/{notice}/edit', 'NoticeController@update');
+    Route::delete('/news/{notice}', 'NoticeController@destroy');
 });
 
 /* todo lo demas */

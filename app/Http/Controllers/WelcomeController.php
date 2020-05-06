@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Brand;
 use App\Category;
+use App\Notice;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -13,11 +14,12 @@ class WelcomeController extends Controller
 
     public function welcome()
     {
-        $categories = Category::all();
-        $products = Product::limit(5); //traemos solo producto con categoria tapones
-        $marcas = Brand::all();
 
-        return view('welcome')->with(compact('products', 'marcas', 'categories'));
+        $products = Product::paginate(5); //traemos solo producto con categoria tapones
+        $marcas = Brand::all();
+        $notices = Notice::all();
+
+        return view('welcome')->with(compact('products', 'marcas','notices'));
     }
 
     public function somos()
@@ -32,6 +34,11 @@ class WelcomeController extends Controller
     public function contacto()
     {
         return view('contacto');
+    }
+    public function laboratorio()
+    {
+        return view('laboratorio');
+
     }
 
     public function enviar(Request $request)
